@@ -13,3 +13,7 @@ num = 10
 print(num > 5 and 110 > 50)
 print(not num)
 print(not num > 5)
+
+# 조건 연산자(삼항 연산자)
+# 조건식 ? 참일경우 : 거짓일 경우
+# 파이썬에는 조건연산자 없다.
