@@ -118,3 +118,71 @@ print(text)
 # 문자열에 들어있는 게 숫자인지 아닌지 판별
 text = "12345"
 print(text.isdigit()) # 문자열을 숫자로 변환하기전에 확인하는 용도
+
+# 문자 종류 확인
+text1 = "tomato"
+text2 = "banana "
+text3 = "사월22"
+print(text1.isalpha()) # 문자만 있는지 확인
+print(text2.isspace()) # 공백만 있는가
+print(text3.isalnum()) # 문자+숫자인가?
+
+# 문자열 정렬
+text = "15"
+print(text.zfill(6)) # 함수() 안에 자리수 넣기
+print(text.rjust(4))
+print(text.ljust(5))
+
+
+# 문제 1 - 공백제거와 소문자변환을 하려면?
+# input으로 입력받아서 공백제거와 소문자변환을 하세요
+
+# text = input()
+# print(text.replace(" ", "").lower())
+# print("".join(text.lower().split(" ")))
+
+
+# 문제 2 - "행복,우울,기쁨,슬픔,화남"
+# 위 문자열을 나누어 보세요
+
+text = "행복,우울,기쁨,슬픔,화남"
+print(text.split(","))
+
+
+# 문제 3 - 회원가입시 이메일 입력을 하는데 특정 주소만 가능하다.
+# naver.com,gmail.com,nate.com,daum.net
+# input으로 입력받아서 가입 가능한지 불가능한지 출력
+
+# email = input("이메일 입력 : ").strip().lower()
+# emails = ("naver.com", "gmail.com", "nate.com", "daum.net")
+
+# if email.endswith(emails) :
+#     print("가입 가능")
+# else :
+#     print("가입 불가능")
+
+# email_list = "naver.com,gmail.com,nate.com,daum.net".split(",")
+
+
+# if any(email.endswith(domain) for domain in email_list) :
+#     print("가입 가능")
+# else :
+#     print("가입 불가능")
+
+
+# 문제 4 - 금액 계산하기
+# 각 업체별로 입금이 되었다. 총액이 얼마인지 출력하세요
+
+쿠팡 = "135,900원"
+네이버 = "540,000원"
+오드론 = "2,340,090원"
+
+없어질것들 = (",","원")
+돈리스트 = [쿠팡, 네이버, 오드론]
+총액 = 0
+for 금액 in 돈리스트 :
+    for 없어질것 in 없어질것들:
+        금액 = 금액.replace(없어질것, "")
+    총액 += int(금액)
+
+print(f"{총액:,}원")
