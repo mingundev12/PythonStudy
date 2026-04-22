@@ -100,4 +100,17 @@ print( word.rstrip() )  #오른쪽 공백제거
 # 찾기
 word= "찬용이는  진섭이보다 지금이 좋다고 한다."
 print(  word.find("진섭")  )  #  있다면 위치 반환(인덱스) 없으면 -1
-print( word.index("동렬") ) # 인덱스반환, 없으면 에러
+# print( word.index("동렬") ) # 인덱스반환, 없으면 에러
+
+# 문자열 바꾸기 .replace("현재 문자열에서 변경할 문자열", "교체할 문자열")
+word = word.replace("찬용이", "성현이")
+print(word)
+
+# 문자열 나누기 - 배열
+text = "도헌-지연-동렬-진섭"
+result = text.split('-')
+print(result)
+
+# 배열을 하나의 문자열로 합치기
+text = ",".join(result)
+print(text)
