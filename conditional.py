@@ -112,5 +112,9 @@ result = text.split('-')
 print(result)
 
 # 배열을 하나의 문자열로 합치기
-text = ",".join(result)
+text = ",".join(result) # 배열값 하나하나에 ',' 를 넣어서 하나의 문자열 만들기
 print(text)
+
+# 문자열에 들어있는 게 숫자인지 아닌지 판별
+text = "12345"
+print(text.isdigit()) # 문자열을 숫자로 변환하기전에 확인하는 용도
