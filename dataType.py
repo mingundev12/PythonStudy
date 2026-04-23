@@ -125,9 +125,9 @@ fruits.sort(key=len)
 
 
 # q7. 
-fruits.sort()
-print(fruits)
-price = [5000, 8000, 12000, 9500, 15500, 20400, 9000]
+# fruits.sort()
+# print(fruits)
+# price = [5000, 8000, 12000, 9500, 15500, 20400, 9000]
 # buyFruits = input("과일 이름 입력 : ").strip()
 # buyCounts = input("구매할 개수 입력 : ").strip()
 # buyFruitList = buyFruits.split(" ")
@@ -141,11 +141,81 @@ price = [5000, 8000, 12000, 9500, 15500, 20400, 9000]
 # print("총 가격 : ", total)
 
 
-fruit_dict = dict(zip(fruits, price))
+# fruit_dict = dict(zip(fruits, price))
 
-buy_names = input("과일 이름 입력 : ").strip().split()
-buy_counts = [int(c) for c in input("구매할 개수 입력 : ").strip().split()]
+# buy_names = input("과일 이름 입력 : ").strip().split()
+# buy_counts = [int(c) for c in input("구매할 개수 입력 : ").strip().split()]
 
-total = sum(fruit_dict[name] * count for name, count in zip(buy_names, buy_counts))
+# total = sum(fruit_dict[name] * count for name, count in zip(buy_names, buy_counts))
 
-print("총 가격 : ", total)
+# print("총 가격 : ", total)
+
+
+
+
+
+
+
+
+# tuple - 리스트처럼 여러 데이터를 저장할 수 있는 자료형이다.
+# 저장한 데이터를 수정할 수 없다.
+# 데이터를 보호하기 위한 목적
+# 속도와 메모리 효율성
+
+# dictionary 의 key 로 사용
+# 여러개의 값을 반환(return) 시킬 때
+
+# 튜플 만들기
+number = (10, 20, 30, 40) # 작은괄호 - 튜플, 대괄호 - 리스트
+
+print(number)
+print(type((1,2,3,4))) # tuple
+print(type((10))) # int
+print(type((10,))) # tuple
+
+
+# number[0] = 100 값 수정은 오류
+print(number[1]) # index = 0 부터
+
+# tuple 슬라이싱
+print(number[1:3])
+
+print(10 in number)
+print(number.index(20))
+
+# 리스트와 다른점
+# 수정불가
+# number.append(200) 오류
+# number.remove(20) 오류
+# number.pop(20) 오류
+# del number[2] 오류
+
+print(number.count(20)) # 특정값 개수 구하기
+
+data = 10,20,30,40,50 # 패킹 - 여러값을 하나로 묶기
+print(type(data))
+print(data)
+
+a, b, c, d, e = data # 언패킹 - 묶여있는 값을 여러 개로 나누기
+print(a, b, c, d, e)
+
+red = 20
+blue = 10
+
+red, blue = blue, red # 패킹과 언패킹을 동시에 진행 => 서로 다른 두 변수의 값을 변경하는 것이 가능
+print(red, blue)
+
+# 함수 반환 여러개
+def get() :
+    return 10,20,30,40
+
+print(get())
+
+# list <-> tuple
+info = ("다음주", "금요일", "빨간날", "그래서", "우리는", "5월6일에", "봐요")
+
+info_list = list(info)
+info_list[0] = "이번주"
+
+info = tuple(info_list)
+print(info)
