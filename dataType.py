@@ -40,10 +40,10 @@ print(number)
 number.remove(10) # 리스트에서 삭제할 데이터를 입력 (인덱스 X)
 print(number)
 
-number.pop(3) # 리스트에서 삭제할 데이터의 인덱스를 입력
+number.pop(3) # 리스트에서 삭제할 데이터의 인덱스를 입력 => 해당하는 인덱스의 값을 직접적으로 삭제하는 방법
 print(number)
 
-del number[2] # 인덱스로 삭제
+del number[2] # 인덱스로 삭제 => number[2] 라는 참조 변수를 삭제함으로써 number[2]라는 변수와 연결된 실제 값과의 연결을 끊음
 print(number)
 
 #리스트 크기(길이)
@@ -67,3 +67,85 @@ number.sort()
 print(number)
 number.sort(reverse=True)
 print(number)
+
+# 리스트는 일반적으로 많이 사용되는 자료구조다.
+# 자바에서 List(ArrayList)를 많이 사용한다면 파이썬은 리스트이다.
+# 여러 데이터를 저장할 수 있고, 수정, 추가 가능하고, 반복문 사용 쉽고,
+# 정렬, 검색도 되고 그래서 사용하기 좋은 것이다.
+
+
+#리스트 문제 풀기
+# q1. 5명의 이름이 저장되어 있는 리스트 만들기
+# 5명의 이름 출력하는 반복문 만들기
+
+names = ["이순신", "강감찬", "이성계", "문익점", "한석봉"]
+
+print(type(names))
+for name in names :
+    print(name)
+
+
+# q2. 정도전 이름을 추가하고 출력하세요
+names.append("정도전")
+print(names)
+
+
+# q3. 리스트에 김유신이 있는지 확인하는 코드 작성하기
+
+name = "김유신"
+if name in names :
+    print(name, "있다")
+else :
+    print(name, "없다")
+
+
+# q4. 이름 리스트에 내림차순으로 정렬하여 출력하세요
+names.sort(reverse=True)
+print(names)
+
+# q5. 과일의 이름이 두글자인 과일만 출력하세요
+
+fruits = ["사과", "바나나", "파인애플", "딸기", "오렌지", "포도", "배"]
+
+for fruit in fruits :
+    if len(fruit) == 2 :
+        print(fruit)
+
+fruits.sort(key=len)
+
+# q6. 과일 검색 프로그램 만들기
+# 과일이름 키보드를 통해 입력받는다
+# 입력한 과일이 리스트에 있다면 판매중, 없다면 품절 이라고 출력
+
+# fruit = input("과일 이름 입력 : ").strip()
+# if fruit in fruits :
+#     print("판매 중")
+# else :
+#     print("품절")
+
+
+# q7. 
+fruits.sort()
+print(fruits)
+price = [5000, 8000, 12000, 9500, 15500, 20400, 9000]
+# buyFruits = input("과일 이름 입력 : ").strip()
+# buyCounts = input("구매할 개수 입력 : ").strip()
+# buyFruitList = buyFruits.split(" ")
+# buyCountList = buyCounts.split(" ")
+
+# total = 0
+# for i, buyFruit in enumerate(buyFruitList) :
+#     if buyFruit in fruits :
+#         total += price[fruits.index(buyFruit)] * int(buyCountList[i])
+
+# print("총 가격 : ", total)
+
+
+fruit_dict = dict(zip(fruits, price))
+
+buy_names = input("과일 이름 입력 : ").strip().split()
+buy_counts = [int(c) for c in input("구매할 개수 입력 : ").strip().split()]
+
+total = sum(fruit_dict[name] * count for name, count in zip(buy_names, buy_counts))
+
+print("총 가격 : ", total)
