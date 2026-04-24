@@ -86,7 +86,7 @@ std4 = [90, 34, 61]
 std5 = [59, 63, 70]
 
 stdName = ["이순신", "임꺽정", "한석봉", "정약용", "김춘추"]
-className = "국어", "수학", "영어"
+subject = "국어", "수학", "영어"
 
 std = std1, std2, std3, std4, std5
 
@@ -95,10 +95,30 @@ std = std1, std2, std3, std4, std5
 score = dict()
 for i, name in enumerate(stdName) :
     temp = dict()
-    for j, cname in enumerate(className) :
+    for j, cname in enumerate(subject) :
         temp[cname] = std[i][j]
 
     score[name] = temp
 
 
 print(score)
+
+
+# 문제1 . 딕셔너리를 만드세요
+
+snackName = ["새우깡", "칙촉", "마가렛", "짱구", "포카칩", "초코하임"]
+price = [2000, 3200, 4500, 3000, 2800, 4200]
+
+snack = dict()
+for i, name in enumerate(snackName) :
+    snack[name] = price[i]
+
+print(snack)
+
+snack2 = {k : price[i] for i, k in enumerate(snackName)}
+
+print(snack2)
+
+snack3 = {name : p for name, p in zip(snackName, price)}
+
+print(snack3)
