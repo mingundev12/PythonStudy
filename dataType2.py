@@ -109,16 +109,76 @@ print(score)
 snackName = ["새우깡", "칙촉", "마가렛", "짱구", "포카칩", "초코하임"]
 price = [2000, 3200, 4500, 3000, 2800, 4200]
 
-snack = dict()
-for i, name in enumerate(snackName) :
-    snack[name] = price[i]
+# snack = dict()
+# for i, name in enumerate(snackName) :
+#     snack[name] = price[i]
 
-print(snack)
+# print(snack)
 
 snack2 = {k : price[i] for i, k in enumerate(snackName)}
 
 print(snack2)
 
-snack3 = {name : p for name, p in zip(snackName, price)}
+# snack3 = {name : p for name, p in zip(snackName, price)}
 
-print(snack3)
+# print(snack3)
+
+
+# 문제 2. 딕셔너리를 만들고 다음 조건으로 조회하세요
+item = ["선풍기", "냉장고", "에어컨", "Tv", "컴퓨터", "노트북", "청소기"]
+brand = ["LG", "삼성", "LG", "삼성", "HP", "DELL", "다이슨"]
+price = [80000, 1250000, 850000, 1540800, 2300000, 1570000, 534000]
+
+#item, brand, price 의 각 인덱스 매칭이다.
+#선풍기는 LG 이고 금액은 80000 원 이다
+#딕셔너리의 키는 제품명 value는 브랜드와 금액
+# 삼성 브랜드의 제품명과 금액을 출력하세요
+
+items = {name : {"brand" : brand[i], "price" : price[i]} for i, name in enumerate(item)}
+
+# print(items)
+
+# for i in items :
+#     if items[i]["brand"] == "삼성" :
+#         print(i, items[i]["price"])
+
+
+for name, info in items.items() :
+    if info["brand"] == "삼성" :
+        print(name, info["price"])
+
+
+
+# set 중복허용X 순서X 자료형
+
+data = {1, 2, 3, 4, 5, 3, 4, 5, 3, 4, 5}
+print(data)
+
+set1 = set()
+
+list = ["이순신", "김춘추", "장영실", "이순신", "장영실"]
+
+set2 = set(list)
+print(set2)
+
+set2.add("한석봉")
+print(set2)
+
+set2.update(["정약용", "문익점", "이성계"]) # 여러 개 추가
+print(set2)
+
+set2.remove("한석봉") # 삭제 없는 것 삭제하면 오류
+print(set2)
+
+set2.discard("한석보") # 삭제 없어도 오류 없음
+print(set2)
+
+
+# set 안에 값이 존재하냐 -> in
+
+# 교집합, 합집합, 차집합
+a = {"복숭아", "배", "메론", "체리", "포도"} # 도헌이가 좋아하는 과일
+b = {"사과", "배", "딸기", "바나나"} # 찬용이가 좋아하는 과일
+c = {"바나나", "참외", "사과", "귤", "포도", "딸기", "토마토"} # 현규가 좋아하는 과일
+
+print(a & b)
