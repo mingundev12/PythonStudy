@@ -193,6 +193,30 @@ print(b ^ c) # 대칭 차집합 (XOR)
     dict = key : value 구조, key는 중복안됨
     set = 중복허용 X 순서없ㅇ므, 검색, 그룹(집합)에 사용
 """
+# 과일 가게 재고 관리 프로그램 
+
+# 과일 데이터 
+fruits = [ 
+    {"name":"사과", "price":3000,  "stock":20 },
+    {"name":"바나나", "price":1500, "stock":30 },
+    {"name":"포도", "price":5000, "stock":11 },
+    {"name":"복숭아", "price":4000, "stock":8 },
+    {"name":"수박", "price":9900 , "stock":34 }
+]
+
+sales = []  # 판매 기록 용
+admin = { "id":"admin", "pw":"1234" }  # 관리자 로그인 
+
+print("\n========= 과일 재고 관리 프로그램 ==========\n")
+
+userId = input("아이디 : ").strip().lower()
+userPw = input("비밀번호 : ").strip()
+
+if userId == admin["id"]  and userPw == admin["pw"]:
+    print("로그인 성공")
+else:
+    print("아이디 또는 비밀번호가 잘못되었습니다.")
+    exit()
 
 while True :
     menu = input("메뉴 선택 : ").strip()
@@ -203,6 +227,17 @@ while True :
             print(f"{fruit['name']} / 가격 : {fruit['price']}원 / 재고 : {fruit['stock']}개")
     elif menu == "2" :
         print("검색")
+        keyword = input("검색어입력 : ").strip()
+
+        result = [fruit for fruit in fruits if keyword in fruit["name"]]
+
+        if result :
+            for f in result :
+                print(f["name"], " / 가격 ", f["price"], "원 / 재고 ", f["stock"], "개")
+        else :
+            print("검색 결과가 없습니다.")
+
+
     elif menu == "3" :
         print("판매")
     elif menu == "4" :
