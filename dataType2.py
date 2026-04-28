@@ -218,7 +218,18 @@ else:
     print("아이디 또는 비밀번호가 잘못되었습니다.")
     exit()
 
-while True :
+# 로그인후  메뉴 실행
+
+while True:
+    print("\n==== 메뉴 ====")
+    print("1. 과일 목록 보기 ")
+    print("2. 과일 검색")
+    print("3. 과일 판매")
+    print("4. 재고 확인")
+    print("5. 과일 추천")
+    print("6. 판매 기록보기")
+    print("0. 종료")
+
     menu = input("메뉴 선택 : ").strip()
 
     if menu == "1":
@@ -239,13 +250,67 @@ while True :
 
 
     elif menu == "3" :
-        print("판매")
+        name = input("판매한 과일 이름 : ").strip()
+        count = int(input("판매 수량").strip())
+
+        found = False # 판매한 과일이 과일 데이터에 있나 없나
+        for fruit in fruits :
+            if fruit["name"] == name:
+                found = True
+                if fruit["stock"] >= count :
+                    fruit["stock"] -= count
+            # 판매 내역을 튜플로 작성
+                    sale = (name, count, fruit["price"] * count)
+                    sales.append(sale)
+                    print("판매 완료")
+                    print("총 금액 : ", fruit["price"] * count, "원")
+                else :
+                    print("재고가 부족합니다.")
+        if found == False :
+            print("해당 과일이 없습니다")
+        
     elif menu == "4" :
-        print("재고")
+        # 과일들의 재고량을 확인하여 5개 이하인 과일들을 찾아서 출력
+        # 만약 5개이하인 과일이 없다면 재고 부족 과일이 없습니다. 라고 출력
+        # insufficients = []
+        # for fruit in fruits :
+        #     if fruit["stock"] <= 5 :
+        #         insufficient = (fruit["name"], fruit["stock"])
+        #         insufficients.append(insufficient)
+
+        # if len(insufficients) == 0 :
+        #     print("재고 부족 과일이 없습니다")
+        # else :
+        #     for insufficient in insufficients :
+        #         print(insufficient)
+
+
+        # 컴프리헨션으로 [표현식 for 변수 in 반복대상]
+        low_stock = [fruit for fruit in fruits if fruit["stock"] <= 5]
+
+        if low_stock :
+            print(low_stock)
+        else :
+            print("재고부족 과일이 없습니다")
     elif menu == "5" :
         print("추천")
+        recommend = random.sample(fruits, 3)
+        result = sorted(recommend, key=lambda x : x["name"])
+
+        print("==== 오늘의 추천과일 ====")
+        for fruit in result :
+            print(f"{fruit["name"]}")
     elif menu == "6" :
         print("기록")
+
+        total = 0
+
+        for sale in sales :
+            name, count, price = sale
+            print (name, count, "개 ", price, "원")
+            total += price
+
+        print("총 판매 금액 : ", total, "원")
     elif menu == "0" :
         print("종료")
         break

@@ -1,147 +1,137 @@
-# loop.py
+#function1.py
 
-# print("숫자 : 1")
-# print("숫자 : 2")
-# print("숫자 : 3")
-# print("숫자 : 4")
-# print("숫자 : 5")
+#  제어자 반환타입 메서드이름( 매개변수 ) 
 
-# 5번 반복하는 반복문
-# for i in range(5,0,-1) :
-#     print("숫자 : " + str(i))
+# 파이썬 함수 -  def 함수이름(매개변수):
+
+def hi():
+    print("안녕")
 
 
+# 함수 실행 - 호출
+# 함수이름() - () 소괄호에 매개변수가 있다면  넣어주기
+hi()
 
-# print("===================")
 
-# for ch in "hello" :
-#     print(ch)
+def intro(name : str):
+    print( name, "님 로그인 하셨습니다.")
 
-# for name in ["차도헌","박지연","이성찬","김진숙","이동렬","김현규"] :
-#     print(name)
+
+name = "김유신"
+if type(name) == str:  # isinstance( name , str)
+    intro(name)
+
+
+intro("하늘소")
+intro("감기약")
+intro(1000)
+
+
+def dataInput(a,b,c):
+    print( a + b + c)
+
+dataInput(1,20,30)
+
+# 함수를 만들때(정의)  어떤 기능을 가진 함수를 만들것인가  
+#  해당 기능이 작동 되기 위해서  필요한것이 무엇인가
+#  필요한것들이  함수 안에서 만들수 있는것인가  아니면  외부에서 받아야 하는것인가
+
+# 함수의 반환값  return - 함수가 호출된 위치로 값을 돌려보내는 작업, 그리고 함수의 종료
+
+def add( num1 , num2 ):
+    return "계산 결과 " , num1 + num2
+
+
+comment , res = add( 10, 20 )
+print(comment , res)
+
+
+# 변수의 범위  -  지역변수 ,전역변수 
+
+number = 1000
+
+
+
+def totalPrice( price ):
+    total = 0
+    for money in price:
+        total += money
+    global number 
+    number = total  # 전역변수의 수정은  안된다.  global을 붙여줘야 수정가능
+
+
+
+totalPrice( [ 1,2,3,4,5] )
+print( number )
+
+
+# 문제1.  간단한 함수만들기  
+#   사각형의  너비와 높이를  받아서  넓이를 출력하는 함수를 만들어  호출해보세요
+#  함수에서 넓이 구하는계산식 있어야 하고 출력도 있어야 한다.
+
+def square(width, height):
+    res = width* height
+    print("넓이는 : ", res)
+
+square(20 , 5)
+
+
+#문제 2.  아래 코드를 보고  함수를 만드세요
+# 로그인 체크 함수 만들기
+
+def login_check(id, pw):
+    if id=="admin" and pw=="1234":
+        return True
+    else: return False
     
-# total = 0
-# for i in range(1, 11) :
-#     total += i
-# print("총합 : " + str(total))
-
-# # Q2. ["15,000", "13,000", "8,700", "9,000", "25,000"]
-# # 배열에 출금금액 저장
-# # 10,000 이상 금액을 출력
-
-# money_list = ["15,000", "13,000", "8,700", "9,000", "25,000"]
-# for money_str in money_list :
-#     money = int(money_str.replace(",",""))
-#     if money >= 10000 :
-#         print(money_str)
-
-# for i in range(len(money_list)) :
-#     print("금액 : ", i, money_list[i])
-
-# for i, v in enumerate(money_list) :
-#     print(i, v.rjust(6))
 
 
+id=input("아이디를 입력하세요")
+pw=input("비밀번호를 입력하세요")
 
-# # Q3. [89, 56, 78, 92, 61, 96, 83, 74]
-# # 203 호 학생들의 성적이다. 성적의 총합과 평균을 출력하세요
-# # 80점 이상인 학생들의 위치(인덱스)도 출력하세요
-
-# score = [89, 56, 78, 92, 61, 96, 83, 74]
-
-# print(f"총점 : {sum(score)}, 평균 : {sum(score) / len(score)}")
-
-# for i, v in enumerate(score) :
-#     if v >= 80 :
-#         print("80점 넘은 학생 : ", i)
+if login_check(id,pw):   # 여기 부분 을 함수로 처리 될수 있게
+    print("로그인 성고 하여습니다.")
+else:
+    print("아이디 또는 비밀번호를 잘못 입력 했습니다.")
 
 
-# 반복문 while
+#문제3 .  상품의 재고를 확인하여  재고 충분, 재고 부족, 품절  이라고 출력 할수 있는 함수만들기
+#  재고 부족 기준은  현재 재고량이 8이하인 경우
 
-# while 조건 :
-#     실행코드
+item_stock = 12
 
-#while 문은 조건식이 참인 경우에 동작하기때문에
-#쉽게 무한루프에 들어갈 수 있다.
-#하여 while문 사용 시 중단시킬 수 있는 break를 같이 사용하는 게 좋다.
+if item_stock > 8:
+    print(" 재고 충분 ")
+elif item_stock > 0 :
+    print("재고 부족")
+else :
+    print("품절")
 
-# num = 5
-# while num > 2 :
-#     print("2보다 크다")
-#     break
+# 위 코드를  print( 함수 호출 )  이렇게 실행 하면 동작하수 있게 함수 만드세요 
 
-
-# while True :
-#     num += 1
-#     if num == 7 : continue
-#     print(num)
-#     if num == 10 : break
-
-# print("=======")
-
-# while True :
-#     cmd = input("명령어 입력 : ").strip().lower()
-#     if cmd == "history" :
-#         print("모든 기록 출력")
-#     elif cmd == "mkdir" :
-#         print("새로운 폴더 만들기")
-#     elif cmd == "remove" :
-#         print("파일 삭제")
-#     elif cmd == "exit" : 
-#         print("종료")
-#         break
-#     else :
-#         print("존재하지 않는 명령어 입니다.")
+def stock_check( stock ):
+    if stock > 8:
+        return "재고 충분"
+    elif stock >0 :
+        return "재고 부족"
+    else:
+        return "품절"
+    
+print( stock_check(item_stock) )
 
 
-# 파이썬 랜덤 사용
-import random
+# 문제 4.   회원가입을 한다.  아이디 중복체크 함수를 만드세요
 
-# num = random.randint(1, 10)
-# print(num)
+id_list=["kim", "lee","sky", "gold", "war123", "qwer12", "eeeel4" ]
 
-# 동전 앞면 뒷면 맞추기 게임 만들기
+# id_list는  현재 가입된 회원들의 아이디만 저장된 리스트이다. 
+# 아이디 중복체크 함수를 통해  사용가능, 불가능을 출력하세요
 
-# coin = random.randint(1, 2)
-# while True :
-#     answer = input("앞면 = 1 뒷면 = 2 입력하시오 : ").strip().lower()
-#     if answer.isdigit() :
-#         answer_num = int(answer)
-#         if answer_num == coin :
-#             print("정답!")
-#             break
-#         else :
-#             print("틀렸습니다. 다시 도전하세요.")
-#     else :
-#         print("잘못된 입력입니다")
-
-
-game = ["가위","바위","보"]
-n = random.choice(game)
-print(n)
-
-# 가위바위보 게임 5판 진행
-# 5번째 게임이 끝나면 몇승 몇패 몇무인지 출력
-
-win = 0
-lose = 0
-draw = 0
-while True :
-    com = random.choice(game)
-    player = input("가위바위보 : ").strip().lower()
-    if player not in game :
-        print("잘못된 입력입니다")
-        continue
-    diff = (game.index(com) - game.index(player)) % 3
-    if diff == 0 : 
-        print("당신 : ", player, "상대 : ", com, " 무승부")
-        draw += 1
-    elif diff == 1 : 
-        print("당신 : ", player, "상대 : ", com, " 패배")
-        lose += 1
-    else : 
-        print("당신 : ", player, "상대 : ", com, " 승리")
-        win += 1
-    if win + lose + draw >= 5 : break
-
-print("win : ", win, " draw : ", draw, " lose : ", lose)
+def id_check( id ):
+    global id_list
+    if id in id_list:
+        return "사용불가능"
+    else:
+        return "사용가능"
+    
+print( id_check("park")  )
