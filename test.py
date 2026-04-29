@@ -1,31 +1,18 @@
-print("와우")
-num = 10
-num2 = 30
-result = num + num2
-print(result)
-name = '전'
-print(name)
-job = "군인"
-print(name + job + " 이다")
-print("배고파" * 5)
-반지름 = 5
-pi = 3.14
-print(반지름 * 2 * pi)
-is_student = True
-is_food = False
-print(is_student)
-print(type(pi))
-# num = input("정수입력 : ")
-# num = int(num)
-# print(num + 10)
-# 한줄 주석 이다
-"""
-여러줄 주석
-"""
+print("git연결")
+# 연산자 - 비교, 논리, 증감, 대입 , 산술 
+# 산술연산자  /  나누기   ,   % 
+print(10 / 3)
+print( 10 // 3 )  # 몫
+print( 10 % 3 )  # 나머지
+print( 2 ** 3 )  # 거듭제곱 ** 
 
-#문제. 너비와 높이를 입력받아 사각형의 넓이를 출력하세요
-width = input("너비 입력 : ")
-height = input("높이 입력 : ")
-width = int(width)
-height = int(height)
-print("사각형의 넓이 : " + str(width * height))
+num = 10
+print( num > 5 and 110 > 50 )
+print( not num > 5 )
+
+#  a = a+5   ->  a+=5
+
+# 조건연산자 ( 삼항 연산자)
+# 조건식 ? 참일경우  :  거짓일경우
+# 파이썬에는  조건연산자 없다.
+
